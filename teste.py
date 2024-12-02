@@ -1,4 +1,7 @@
 import time
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 
 def busca_forca_bruta(text, pattern):
     m = len(pattern)
@@ -94,3 +97,11 @@ end_bm = time.time()
 print(f"Porcentagem de plágio BOYER MOORE: {percentual_plagio:.2f}%")
 print(f"Frases coincidentes: {matching_frases} de {total_frases}")
 print(f"Tempo de execução {(end_bm-start_bm) * 10**3}ms")
+
+# Plotar gráfico
+labels = ['Força Bruta', 'Boyer-Moore']
+times = [end_fb-start_fb, end_bm-start_bm]
+plt.bar(labels, times)
+plt.ylabel('Tempo de execução (ms)')
+plt.title('Tempo de execução dos algoritmos')
+plt.show()
